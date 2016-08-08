@@ -13,8 +13,7 @@ var opts = {
 	logLevel: 2
 };
 
-var homeDir = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-var configPath = path.join(homeDir, '.live-server.json');
+var configPath = path.join(process.cwd(), '.live-server.json');
 if (fs.existsSync(configPath)) {
 	var userConfig = fs.readFileSync(configPath, 'utf8');
 	assign(opts, JSON.parse(userConfig));
